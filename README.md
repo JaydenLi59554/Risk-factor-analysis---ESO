@@ -7,11 +7,11 @@ Before setting up the package, users should have version 4.5.1 or higher, and se
 **File:** `my_database.csv`
 
 ### Data regression analysis 
-**File:** `Risk_factor_analysis.Rmd`
+**File:** `Regression analysis.Rmd`
 
 This script focuses on integrating and performing regression analysis. It primarily demonstrates the 'all data' analysis and the data analysis for the 'male group'.
 
 ### Data plot  
-**File:** `Risk_factor_plot.Rmd` 
+**File:** `Plot.Rmd` 
 
 This script focuses on integrating analysis code related to plotting. It primarily demonstrates plotting for different sex groups and merging plots.
