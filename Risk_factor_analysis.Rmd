@@ -1,0 +1,102 @@
+---
+title: "Risk factor analysis"
+output: html_document
+date: "2026-01-15"
+---
+
+```{r setup, include=FALSE}
+library(dplyr)
+library(sjPlot)
+library(lubridate)
+library(tools)
+library(haven)
+library(broom)
+rm(list = ls())
+options(scipen = 999)
+```
+
+```{r, include=FALSE}
+
+my_data <- read.csv("my_database.csv")
+
+names(my_data)
+my_data[1:10,1:8]
+```
+
+# Table1
+
+```{r, echo=FALSE}
+  
+# both sex
+model1 <- lm(all_data ~ variable1, data = my_data)
+model2 <- lm(all_data ~ variable2, data = my_data)
+model3 <- lm(all_data ~ variable3.all, data = my_data)
+model4 <- lm(all_data ~ variable4.all, data = my_data)
+model5 <- lm(all_data ~ variable5.all, data = my_data)
+model6 <- lm(all_data ~ variable6.all, data = my_data)
+
+
+
+models <- list(model1, model2, model3, model4, model5, 
+               model6 )
+
+results_both <-  data.frame(variables = rep(1,6),
+                       O_beta = rep(1,6),
+                       o_ci_lower = rep(1,6),
+                       o_ci_uper = rep(1,6),
+                       o_p = rep(1,6))
+
+for (i in 1:6) {
+  results_both[i,1] <- paste0("variable", i)  
+  results_both[i,2] <- coef(models[[i]])[2]
+  results_both[i,3] <- confint(models[[i]])[2, 1]
+  results_both[i,4] <- confint(models[[i]])[2, 2] 
+  results_both[i,5] <- summary(models[[i]])$coefficients[2, 4]
+}
+
+kable(results_both)
+
+```
+
+```{r, echo=FALSE}
+
+# male
+model1 <- lm(male_data ~ variable1, data = my_data)
+model2 <- lm(male_data ~ variable2, data = my_data)
+model3 <- lm(male_data ~ variable3.male, data = my_data)
+model4 <- lm(male_data ~ variable4.male, data = my_data)
+model5 <- lm(male_data ~ variable5.male, data = my_data)
+model6 <- lm(male_data ~ variable6.male, data = my_data)
+
+
+
+models <- list(model1, model2, model3, model4, model5, 
+               model6
+               )
+
+results_male <-  data.frame(variables = rep(1,6),
+                       O_beta = rep(1,6),
+                       o_ci_lower = rep(1,6),
+                       o_ci_uper = rep(1,6),
+                       o_p = rep(1,6))
+
+for (i in 1:6) {
+  results_male[i,1] <- paste0("variable", i)
+  results_male[i,2] <- coef(models[[i]])[2]
+  results_male[i,3] <- confint(models[[i]])[2, 1]
+  results_male[i,4] <- confint(models[[i]])[2, 2] 
+  results_male[i,5] <- summary(models[[i]])$coefficients[2, 4]
+}
+
+
+kable(results_male)
+```
+
+# 123
+```{r, include=FALSE}
+
+```
+
+```{r, include=FALSE}
+
+```

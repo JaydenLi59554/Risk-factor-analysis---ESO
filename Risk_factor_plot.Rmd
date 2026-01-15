@@ -1,0 +1,162 @@
+---
+title: "Risk_factor_plot"
+output: html_document
+date: "2026-01-15"
+---
+
+```{r setup, include=FALSE}
+# library(haven) # read dta file
+library(ggplot2)
+library(ggpubr)
+
+rm(list=ls())
+data <- read.csv("my_database.csv")
+names(data)
+str(data)
+
+```
+
+```{r, include=FALSE}
+##### Sex #####
+## variable1
+variable1.m <- ggplot(data = data,
+                mapping = aes(x = variable1, y = male_data)) +
+  theme_classic() +
+  geom_point(colour = "darkblue") +
+  stat_smooth(method = 'lm',colour = "darkblue", alpha = 0.3,se = TRUE) +
+  xlab("variable1") +
+  ylab("Incidence (ASR) of Esophageal Cancer (log)") +   
+  theme(axis.title.x = element_text(size = 8),         
+        axis.title.y = element_text(size = 8),
+        axis.text.x = element_text(size = 10),
+        axis.text.y = element_text(size = 10))
+
+variable1.m.f <- variable1.m +
+  geom_point(aes(x = variable1, y = female_data),colour = "darkorange") +
+  stat_smooth(aes(x = variable1, y = female_data),method = 'lm',
+              colour = "darkorange", alpha = 0.3,se = TRUE)
+
+variable1.m.f
+
+## variable2
+variable2.m <- ggplot(data = data,
+                mapping = aes(x = variable2, y = male_data)) +
+  theme_classic() +
+  geom_point(colour = "darkblue") +
+  stat_smooth(method = 'lm',colour = "darkblue", alpha = 0.3,se = TRUE) +
+  xlab("variable2") +
+  ylab("Incidence (ASR) of Esophageal Cancer (log)") +   
+  theme(axis.title.x = element_text(size = 8),         
+        axis.title.y = element_text(size = 8),
+        axis.text.x = element_text(size = 10),
+        axis.text.y = element_text(size = 10))
+
+variable2.m.f <- variable2.m +
+  geom_point(aes(x = variable2, y = female_data),colour = "darkorange") +
+  stat_smooth(aes(x = variable2, y = female_data),method = 'lm',
+              colour = "darkorange", alpha = 0.3,se = TRUE)
+
+variable2.m.f
+
+## variable3....
+variable3.m <- ggplot(data = data,
+                mapping = aes(x = variable3.male, y = male_data)) +
+  theme_classic() +
+  geom_point(colour = "darkblue") +
+  stat_smooth(method = 'lm',colour = "darkblue", alpha = 0.3,se = TRUE) +
+  xlab("Prevalence of variable3 (%)") +
+  ylab("Incidence (ASR) of Esophageal Cancer (log)") +   
+  theme(axis.title.x = element_text(size = 8),         
+        axis.title.y = element_text(size = 8),
+        axis.text.x = element_text(size = 10),
+        axis.text.y = element_text(size = 10))
+
+variable3.m.f <- variable3.m +
+  geom_point(aes(x = variable3.female, y = female_data),colour = "darkorange") +
+  stat_smooth(aes(x = variable3.female, y = female_data),
+              method = 'lm',colour = "darkorange", alpha = 0.3,se = TRUE)
+
+variable3.m.f
+
+## variable4
+variable4.m <- ggplot(data = data,
+                mapping = aes(x = variable4.male, y = male_data)) +
+  theme_classic() +
+  geom_point(colour = "darkblue") +
+  stat_smooth(method = 'lm',colour = "darkblue", alpha = 0.3,se = TRUE) +
+  xlab("Total amount of variable4 consumption (L)") +
+  ylab("Incidence (ASR) of Esophageal Cancer (log)") +   
+  theme(axis.title.x = element_text(size = 8),         
+        axis.title.y = element_text(size = 8),
+        axis.text.x = element_text(size = 10),
+        axis.text.y = element_text(size = 10))
+
+variable4.m.f <- variable4.m +
+  geom_point(aes(x = variable4.female, y = female_data),colour = "darkorange") +
+  stat_smooth(aes(x = variable4.female, y = female_data),
+              method = 'lm',colour = "darkorange", alpha = 0.3,se = TRUE)
+
+variable4.m.f
+
+## variable5
+variable5.m <- ggplot(data = data,
+                 mapping = aes(x = variable5.male, y = male_data)) +
+  theme_classic() +
+  geom_point(colour = "darkblue") +
+  stat_smooth(method = 'lm',colour = "darkblue", alpha = 0.3,se = TRUE) +
+  xlab("Prevalence of unhealthy variable5 (%)") +
+  ylab("Incidence (ASR) of Esophageal Cancer (log)") +   
+  theme(axis.title.x = element_text(size = 8),         
+        axis.title.y = element_text(size = 8),
+        axis.text.x = element_text(size = 10),
+        axis.text.y = element_text(size = 10))
+
+variable5.m.f <- variable5.m +
+  geom_point(aes(x = variable5.female, y = female_data),colour = "darkorange") +
+  stat_smooth(aes(x = variable5.female, y = female_data),
+              method = 'lm',colour = "darkorange", alpha = 0.3,se = TRUE)
+
+variable5.m.f
+
+## variable6
+variable6.m <- ggplot(data = data,
+                mapping = aes(x = variable6.male, y = male_data)) +
+  theme_classic() +
+  geom_point(colour = "darkblue") +
+  stat_smooth(method = 'lm',colour = "darkblue", alpha = 0.3,se = TRUE) +
+  xlab("Prevalence of variable6") +
+  ylab("Incidence (ASR) of Esophageal Cancer (log)") +   
+  theme(axis.title.x = element_text(size = 8),         
+        axis.title.y = element_text(size = 8),
+        axis.text.x = element_text(size = 10),
+        axis.text.y = element_text(size = 10))
+
+variable6.m.f <- variable6.m +
+  geom_point(aes(x = variable6.female, y = female_data),
+             colour = "darkorange") +
+  stat_smooth(aes(x = variable6.female, y = female_data),
+              method = 'lm',colour = "darkorange", alpha = 0.3,se = TRUE)
+
+variable6.m.f
+
+```
+
+```{r, echo=FALSE}
+
+ggarrange(variable1.m.f,variable2.m.f,variable3.m.f,variable4.m.f,variable5.m.f,
+          variable6.m.f,ncol = 2, nrow = 3)
+
+
+#####
+
+```
+
+# 123
+```{r, include=FALSE}
+
+```
+
+```{r, include=FALSE}
+
+```
+
