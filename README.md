@@ -1,4 +1,4 @@
-# Risk-factor-analysis---ESO
+# Global Esophageal Cancer Subtypes
 
 ## R 
 Before setting up the package, users should have version 4.5.1 or higher, and several packages set up from CRAN.
